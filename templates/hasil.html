@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hasil Jadwal Sholat</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.min.css') }}">
+</head>
+<body class="bg-light">
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-success mb-4">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">🕌 Jadwal Sholat</a>
+  </div>
+</nav>
+
+<div class="container">
+  <h4 class="mb-3">Jadwal Sholat untuk {{ tanggal.strftime('%d %B %Y') }}</h4>
+  <p><strong>Lokasi:</strong> Lat {{ latitude }}, Lon {{ longitude }}</p>
+
+  <div class="row">
+    {% for nama, jam in hasil.items() %}
+      <div class="col-md-4 mb-3">
+        <div class="card text-center shadow">
+          <div class="card-body">
+            <h5 class="card-title">{{ nama }}</h5>
+            <p class="card-text fs-4">{{ jam }}</p>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+<script src="{{ url_for('static', filename='bootstrap.bundle.min.js') }}"></script>
+
+</body>
+</html>
