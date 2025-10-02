@@ -38,34 +38,17 @@
           <input type="number" class="form-control" name="altitude" value="500" required>
         </div>
       </div>
-
-      <div class="mb-3">
+        <div class="mb-3">
         <label class="form-label">Perhitungan Ashar</label>
-        <div class="dropdown">
-          <button class="btn btn-secondary dropdown-toggle" type="button" 
-                  id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-            Pilih Metode
-          </button>
-          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <li><a class="dropdown-item" href="#" data-value="1">Syafi'i</a></li>
-            <li><a class="dropdown-item" href="#" data-value="2">Hanafi</a></li>
-          </ul>
+          <div class="form-check">
+            <input type="radio" class="form-check-input" id="radio1" name="asharMethod" value="1" checked>Syafi'i
+            <label class="form-check-label" for="radio1"></label>
+          </div>
+          <div class="form-check">
+            <input type="radio" class="form-check-input" id="radio2" name="asharMethod" value="2">Hanafi
+            <label class="form-check-label" for="radio2"></label>
+          </div>
         </div>
-        <input type="hidden" name="asharMethod" id="asharMethod" value="Syafi'i">
-      </div>
-
-      <script>
-        document.querySelectorAll('.dropdown-item').forEach(item => {
-          item.addEventListener('click', function (e) {
-            e.preventDefault();
-            let value = this.getAttribute("data-value");   // ambil value (1/2)
-            let text = this.textContent;                   // ambil teks (Syafi'i/Hanafi)
-            document.getElementById("asharMethod").value = value; // simpan ke hidden input
-            document.getElementById("dropdownMenuButton").textContent = text; // update tombol
-          });
-        });
-      </script>
-
       <div class="mb-3">
         <label class="form-label">Tanggal</label>
         <input type="date" class="form-control" name="tanggal" value="2025-09-30" required>
