@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+{% block title %}Konversi Penanggalan{% endblock %}
+
+{% block head_scripts %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+{% endblock %}
+
+{% block content %}
+
+<div class="converter-container">
+  <div class="converter-card">
+<form method="POST" class="converter-form">
+  <h2 class="converter-title">Konversi Penanggalan</h2>
+
+  <div class="form-row">
+    <label for="mode" class="form-label">Pilih Jenis Konversi:</label>
+    <select name="mode" id="mode" class="form-select" required>
+      <option value="greg_to_jd">Gregorian → JD</option>
+      <option value="hij_to_jd">Hijriah → JD</option>
+      <option value="jd_to_greg">JD → Gregorian</option>
+      <option value="jd_to_hij">JD → Hijriah</option>
+      <option value="hij_to_greg">Hijriah → Gregorian</option>
+      <option value="greg_to_hij">Gregorian → Hijriah</option>
+    </select>
+  </div>
+
+  <div class="form-row" id="gregorian-fields">
+    <label class="form-label">Tanggal Gregorian:</label>
+    <div class="input-group">
+      <div class="input-wrapper">
+        <input type="number" id="hari_masehi" name="hari_masehi" min="1" max="31" placeholder="Hari" class="form-input">
+      </div>
+      <div class="input-wrapper">
+        <input type="number" id="bulan_masehi" name="bulan_masehi" min="1" max="12" placeholder="Bulan" class="form-input">
+      </div>
+      <div class="input-wrapper">
+        <input type="number" id="tahun_masehi" name="tahun_masehi" max="2100" placeholder="Tahun" class="form-input">
+      </div>
+    </div>
+  </div>
+
+  <div class="form-row" id="hijri-fields">
+    <label class="form-label">Tanggal Hijriah:</label>
+    <div class="input-group">
+      <div class="input-wrapper">
+        <input type="number" id="hari_hijriah" name="hari_hijriah" min="1" max="30" placeholder="Hari" class="form-input">
+      </div>
+      <div class="input-wrapper">
+        <input type="number" id="bulan_hijriah" name="bulan_hijriah" min="1" max="12" placeholder="Bulan" class="form-input">
+      </div>
+      <div class="input-wrapper">
+        <input type="number" id="tahun_hijriah" name="tahun_hijriah" placeholder="Tahun" class="form-input">
+      </div>
+    </div>
+  </div>
+
+  <div class="form-row" id="jd-field">
+    <label class="form-label">Julian Day (JD):</label>
+    <input type="number" step="any" name="nilai_JD" placeholder="Contoh: 2460321.5" class="form-input full">
+  </div>
+
+  <button type="submit" class="btn-convert">Konversi</button>
+</form>
+
+    <div class="converter-result">
+
+      {% if result %}
+      <div class="result-box">
+        <h4>Julian Day:</h4>
+        <p>{{ result }}</p>
+      </div>
+      {% endif %}
+      
+      {% if tanggal %}
+      <div class="result-box">
+        <h4>Hasil Konversi Tanggal:</h4>
+        <p><p>{{ tanggal | join(' ') }}</p></p>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% block body_scripts %}
+  <script src="{{ url_for('static', filename='js/konversi_tanggal.js') }}" defer></script>
+{% endblock %}
+
+{% endblock %}
