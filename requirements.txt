@@ -1,0 +1,7 @@
+# This file may be used to create an environment using:
+# $ conda create --name <env> --file <this file>
+# platform: linux-64
+# created-by: conda 25.9.1
+flask=3.1.2=pypi_0
+pip=25.3=pyhc872135_0
+python=3.11.14=h6fa692b_0
