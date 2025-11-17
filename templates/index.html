@@ -1,65 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Jadwal Sholat</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.min.css') }}">
-</head>
-<body class="bg-light">
+{% extends "base.html" %}
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-success mb-4">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">🕌 Jadwal Sholat</a>
-  </div>
-</nav>
+{% block title %}Home - Dashboard Pemantauan{% endblock %}
 
-<div class="container">
-  <div class="card shadow p-4">
-    <h4 class="mb-3">Isi Data Lokasi & Tanggal</h4>
-    <form method="POST">
-      <div class="row">
-        <div class="col-md-6 mb-3">
-          <label class="form-label">Latitude</label>
-          <input type="number" step="any" class="form-control" name="latitude" value="-7.9839" required>
-        </div>
-        <div class="col-md-6 mb-3">
-          <label class="form-label">Longitude</label>
-          <input type="number" step="any" class="form-control" name="longitude" value="112.6214" required>
-        </div>
-      </div>
+{% block head_scripts %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='style_main.css') }}">
+{% endblock %}
 
-      <div class="row">
-        <div class="col-md-6 mb-3">
-          <label class="form-label">Timezone (GMT)</label>
-          <input type="number" step="any" class="form-control" name="timezone" value="7.0" required>
-        </div>
-        <div class="col-md-6 mb-3">
-          <label class="form-label">Ketinggian (m)</label>
-          <input type="number" class="form-control" name="altitude" value="500" required>
-        </div>
-      </div>
-        <div class="mb-3">
-        <label class="form-label">Perhitungan Ashar</label>
-          <div class="form-check">
-            <input type="radio" class="form-check-input" id="radio1" name="asharMethod" value="1" checked>Syafi'i
-            <label class="form-check-label" for="radio1"></label>
-          </div>
-          <div class="form-check">
-            <input type="radio" class="form-check-input" id="radio2" name="asharMethod" value="2">Hanafi
-            <label class="form-check-label" for="radio2"></label>
-          </div>
-        </div>
-      <div class="mb-3">
-        <label class="form-label">Tanggal</label>
-        <input type="date" class="form-control" name="tanggal" value="2025-09-30" required>
-      </div>
-      
-      <button type="submit" class="btn btn-success">Cari Jadwal</button>
-    </form>
-  </div>
+{% block content %}
+
+<div class="main-page-container">
+    <h4>Website ini dikembangkan sebagai pembelajaran pada mata kuliah fisika komputasi astronomi sebagai 
+        alat untuk melakukan konversi sistem penanggalan dan jadwal waktu solat berbasis perhitungan astronomis</h2>
 </div>
 
-<script src="{{ url_for('static', filename='bootstrap.bundle.min.js') }}"></script>
+<div class="main-page-container">
+    <h4>
+        Saya menyampaikan ucapan terima kasih kepada:
+        <br>
+        <strong style="font-size: 1.15rem; display:inline-block; margin: 6px 0;">
+          Prof. Dr. rer. nat. Abdurrouf, S.Si., M.Si.
+        </strong>
+        <br>
+        selaku dosen pengampu mata kuliah yang telah memberikan arahan akademik,
+        perspektif ilmiah, serta ruang pengembangan kompetensi sehingga proyek ini
+        dapat diselesaikan.
+    </h4>
+</div>
 
-</body>
-</html>
+{% endblock content %}
